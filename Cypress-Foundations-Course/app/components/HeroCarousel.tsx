@@ -41,11 +41,12 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <div className="relative h-[600px]">
+    <div className="relative h-[600px]" data-testid="hero-carousel">
       <div className="absolute inset-0 w-full h-full">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
+            data-testid='carousel-slide'
             className={`absolute inset-0 transition-opacity duration-1000 ${
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
@@ -66,7 +67,7 @@ export default function HeroCarousel() {
                 {slide.title}
               </h1>
               <p className="text-xl mb-8 max-w-2xl">{slide.description}</p>
-              <Link href={slide.buttonLink} className="btn-primary">
+              <Link href={slide.buttonLink} className="btn-primary" data-testid="carousal-shop-button">
                 {slide.buttonText}
               </Link>
             </div>

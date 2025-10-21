@@ -8,6 +8,7 @@ export default function MenuItem({ pies }: { pies: Pie[] }) {
       {pies.map((pie: Pie) => (
         <div
           key={pie.id}
+          data-testid="pie-item"
           className="bg-white rounded-lg shadow-md overflow-hidden"
         >
           <div className="relative h-64 w-full">
