@@ -1,17 +1,9 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { getPies } from "../../lib/getPies";
 import MenuItem from "../../components/MenuItem";
 
-export default function FruitPage() {
-  const [pies, setPies] = useState([]);
-
-  useEffect(() => {
-    getPies('fruit')
-      .then(data => setPies(data));
-  }, []);
-
+export default async function FruitPage() {
+  const pies = await getPies("fruit");
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

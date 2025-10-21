@@ -3,7 +3,7 @@
 **Cypress Foundations – Course Repository**
 Instructor: Adhithi Ravichandran
 
-🔗 **Course link:** [Cypress Foundations Full Course ](https://www.pluralsight.com/library/courses/cypress-foundations/table-of-contents)
+🔗 **Course link:** 
 
 🔗 **Repository:** [https://github.com/adhithiravi/Cypress-Foundations-Course](https://github.com/adhithiravi/Cypress-Foundations-Course)
 

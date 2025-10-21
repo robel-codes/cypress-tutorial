@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "cy:open": "cypress open"
+    "lint": "next lint"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^15.2.4",
@@ -19,7 +18,7 @@
     "autoprefixer": "^10.4.18",
     "eslint": "^8.57.0",
     "eslint-config-next": "^15.1.6",
-    "next": "^15.3.3",
+    "next": "15.1.6",
     "postcss": "^8.4.35",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -30,11 +29,10 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
-    "cypress": "^14.4.1",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11"
   },
   "engines": {
-    "node": "22.14.0"
+    "node": "22.13.1"
   }
 }
