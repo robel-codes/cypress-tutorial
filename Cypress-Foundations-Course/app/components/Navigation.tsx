@@ -9,6 +9,7 @@ import Image from "next/image";
 export default function Navigation() {
   const { items } = useCart();
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <nav className="bg-[rgba(200,125,82,1)] text-white relative z-50">
@@ -32,9 +33,24 @@ export default function Navigation() {
             <Link href="/" className="nav-link">
               Home
             </Link>
-            <div className="relative group">
-              <button className="nav-link">Shop</button>
-              <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div className="relative">
+              <button
+                className="nav-link"
+                data-testid="shop-button"
+                aria-haspopup="menu"
+                aria-expanded={isOpen}
+                onClick={() => setIsOpen((v) => !v)}
+                onBlur={(e) => {
+                  // close when focus moves outside the dropdown
+                  const next = e.relatedTarget as HTMLElement | null;
+                  if (!next || !e.currentTarget.parentElement?.contains(next)) {
+                    setIsOpen(false);
+                  }
+                }}
+              >
+                Shop
+              </button>
+              <div className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-200 z-50 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'}`}>
                 <div className="py-1">
                   <Link href="/shop" className="dropdown-item">
                     All Pies
