@@ -1,6 +1,13 @@
 describe("Bethany's Pie shop homepage", () => {
     beforeEach(() => {
         cy.visit("/");
+
+        // Define Alias
+        // Alias are like variables that store references to DOM elements
+        // They make tests more readable and easier to maintain also help to avoid repeating selectors multiple times
+        // They are defined using the .as() command
+        // They should be defined inside beforeEach or it blocks not in before 
+        cy.get('[data-testid="pie-item"]').as("pieItems");
     });
 
     it("renders the homepage container", () => {
@@ -9,7 +16,7 @@ describe("Bethany's Pie shop homepage", () => {
 
     it("renders the pies section", () => {
         cy.get('[data-testid="pies-section"]').should("exist");
-        cy.get('[data-testid="pie-item"]').should("have.length.greaterThan", 0);
+        cy.get('@pieItems').should("have.length.greaterThan", 0);
     });
 
     it ("renders the hero carousel with all slides", () => {
@@ -18,7 +25,7 @@ describe("Bethany's Pie shop homepage", () => {
     });
 
     it("lists all pies of the month with name and price", () => {
-        cy.get('[data-testid="pie-item"]').each(($el) => {
+        cy.get('@pieItems').each(($el) => {
             cy.wrap($el).find("h3").should("exist");
             cy.wrap($el).find("p").contains("$").should("exist");
         });
