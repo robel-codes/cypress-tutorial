@@ -29,15 +29,24 @@ describe('Fruit Pies Page', () => {
     });
 
     
-    it("should add all seasonal pies to the cart", () => {
+    it("should add all fruits pies to the cart", () => {
         cy.get('@pieItems').then(($items) => {
             const itemCount = $items.length;
-            cy.wrap($items).each(($el) => {
-                cy.contains("button", "Add to Cart").click();
-            });
+            cy.wrap($items).each(($item) => {
+                cy.wrap($item).contains("button", "Add to Cart").click();   
+            })
 
             // Validate cart count
             cy.get("[data-testid=cart-count]").should("have.text", String(itemCount));
+
+             // Review cart page
+            cy.get("a").contains("Cart").click();
+            cy.url().should("include", "/cart");
+            cy.get("[data-testid=cart-items]").should("have.length", itemCount);
+            cy.get("[data-testid=cart-items]").each(($item) => {
+                cy.wrap($item).find("h3").should("exist"); //Pie name
+                cy.wrap($item).find("p").contains("$").should("exist"); //Pie price
+            })
         });
     });
 

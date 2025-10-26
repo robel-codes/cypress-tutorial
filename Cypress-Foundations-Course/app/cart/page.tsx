@@ -24,6 +24,7 @@ export default function CartPage() {
           {items.map((item) => (
             <div
               key={item.id}
+              data-testid="cart-items"
               className="flex items-center justify-between border-b pb-4"
             >
               <div className="flex items-center space-x-4">
@@ -64,13 +65,15 @@ export default function CartPage() {
                 </button>
               </div>
             </div>
-          ))}
+          ))
+          }
           <div className="flex justify-between items-center pt-4">
             <div className="text-xl font-bold">Total: ${total.toFixed(2)}</div>
             <button className="btn-primary">Proceed to Checkout</button>
           </div>
-        </div>
-      )}
-    </div>
+        </div >
+      )
+      }
+    </div >
   );
 }
