@@ -24,6 +24,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "cypress": "^14.2.0",
+    "cypress-recurse": "^1.37.1",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
     "typescript": "^5"
