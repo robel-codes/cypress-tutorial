@@ -35,3 +35,25 @@
 //     }
 //   }
 // }
+
+
+declare namespace Cypress {
+  interface Chainable<Subject = any> {
+    /**
+     * Custom command to review the cart and validate item count
+     * @example cy.reviewCart(3)
+     */
+    reviewCart(itemCount: number): Chainable<Subject>;
+    }
+}
+
+Cypress.Commands.add('reviewCart', (itemCount: number) => {
+    // Review cart page
+    cy.get("a").contains("Cart").click();
+    cy.url().should("include", "/cart");
+    cy.get("[data-testid=cart-items]").should("have.length", itemCount);
+    cy.get("[data-testid=cart-items]").each(($item) => {
+        cy.wrap($item).find("h3").should("exist"); //Pie name
+        cy.wrap($item).find("p").contains("$").should("exist"); //Pie price
+    })
+});

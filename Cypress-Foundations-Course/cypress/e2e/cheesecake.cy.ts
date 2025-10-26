@@ -31,14 +31,17 @@ describe ('Cheesecake Pies shop Page', () => {
             cy.get("[data-testid=cart-count]").should("have.text", String(itemCount));
 
 
-             // Review cart page
-            cy.get("a").contains("Cart").click();
-            cy.url().should("include", "/cart");
-            cy.get("[data-testid=cart-items]").should("have.length", itemCount);
-            cy.get("[data-testid=cart-items]").each(($item) => {
-                cy.wrap($item).find("h3").should("exist"); //Pie name
-                cy.wrap($item).find("p").contains("$").should("exist"); //Pie price
-            })
+             // Use custom command to review cart
+            cy.reviewCart(itemCount);
+
+             // or using directly Review cart page
+            // cy.get("a").contains("Cart").click();
+            // cy.url().should("include", "/cart");
+            // cy.get("[data-testid=cart-items]").should("have.length", itemCount);
+            // cy.get("[data-testid=cart-items]").each(($item) => {
+            //     cy.wrap($item).find("h3").should("exist"); //Pie name
+            //     cy.wrap($item).find("p").contains("$").should("exist"); //Pie price
+            // })
         });
     });
 
