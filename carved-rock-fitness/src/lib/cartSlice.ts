@@ -13,7 +13,7 @@ export interface CartState {
   items: CartItem[];
 }
 
-const initialState: CartState = {
+const initialState: CartState = (typeof window != 'undefined' && window.Cypress && window.initialCart) || {
   items: [],
 };
 

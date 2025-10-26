@@ -6,7 +6,7 @@ export interface UserState {
   username: string;
 }
 
-const initialState: UserState = {
+const initialState: UserState = (typeof window !== 'undefined' && window.Cypress && window.initialUser) || {
   username: '',
 };
 
